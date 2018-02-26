@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="test-p2-plugin"/>
+  <!-- add our web resources -->
+  <web-resource key="test-p2-plugin-resources" name="test-p2-plugin Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <resource type="download" name="test-p2-plugin.css" location="/css/test-p2-plugin.css"/>
+    <resource type="download" name="test-p2-plugin.js" location="/js/test-p2-plugin.js"/>
+    <resource type="download" name="images/" location="/images"/>
+    <context>test-p2-plugin</context>
+  </web-resource>
+  <web-section key="my_links_section" name="My Links Main Section" location="my_links_link" weight="10"/>
+  <web-item key="my_links_link" name="Link on My Links Main Section" section="system.top.navigation.bar" weight="47">
+    <label>My Company</label>
+    <link linkId="my_links_link">http://www.atlassian.com</link>
+  </web-item>
+  <web-item key="website_link" name="Company Web Site" section="my_links_link/my_links_section" weight="10">
+    <label>Web Site</label>
+    <link linkId="website_link">http://www.atlassian.com</link>
+  </web-item>
+  <web-item key="documentation_link" name="Documentation Web Site" section="my_links_link/my_links_section" weight="10">
+    <label>Documentation</label>
+    <link linkId="documentation_link">http://confluence.atlassian.com</link>
+  </web-item>
+  <web-panel name="ConnectXPanel" i18n-name-key="connect-x-panel.name" key="connect-x-panel" location="atl.jira.view.issue.right.context" weight="1000">
+    <description key="connect-x-panel.description">The ConnectXPanel Plugin</description>
+    <context-provider class="com.atlassian.cst.api.ConnectXPanel"/>
+    <resource name="view" type="velocity" location="connect-x-panel.vm"/>
+    <label key="due-date-indicator.title"/>
+  </web-panel>
+</atlassian-plugin>
