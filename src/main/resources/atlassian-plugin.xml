@@ -37,4 +37,7 @@
     <resource name="view" type="velocity" location="connect-x-panel.vm"/>
     <label key="due-date-indicator.title"/>
   </web-panel>
+  <servlet name="test-p2-plugin" class="com.atlassian.cst.ConnectXServlet" key="test">
+    <url-pattern>/test</url-pattern>
+  </servlet>
 </atlassian-plugin>
